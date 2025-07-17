@@ -6,8 +6,7 @@ from .cag_context import build_cag_context
 from . import create_kv_cache, save_cache
 
 def initialize_cache(configuration: CagConfiguration, llm: LLM):
-    config_id = configuration.config_id
-    cache_name=f"config_{config_id}.cache"
+    cache_name = f"{configuration.cache_name}.cache"
     cache_path = os.path.join(STORAGE, cache_name)
     
     if not os.path.exists(cache_path):
