@@ -6,7 +6,7 @@ load_dotenv()
 # Must be set in the environment
 HF_TOKEN = os.environ.get("HF_TOKEN", None)
 HF_HOME = os.environ.get("HF_HOME", None)
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", None)
+DOCUMENTS_DIR =  os.environ.get("DOCUMENTS_DIR", "_documents")
 
 # Database configuration, defaults to SQLite in memory
 DB_DRIVER = os.environ.get("DB_DRIVER", "sqlite")
@@ -17,10 +17,7 @@ DB_HOST = os.environ.get("DB_HOST", "localhost")
 DB_PORT = os.environ.get("DB_PORT", "5432")
 
 # Safe to leave the default values
-DOCUMENTS_DIR =  os.environ.get("DOCUMENTS_DIR", "_documents")
 STORAGE = os.environ.get("STORAGE", "_storage")
-# EMBED_MODEL_DIR = os.environ.get("EMBED_MODEL_DIR", "embed-models")
 
 # Obtained from the previous variables
-# VECTOR_STORE_DIR = os.path.join(STORAGE, "vector_store")
 DB_URL = f"{DB_DRIVER}://{DB_NAME}" if DB_DRIVER == "sqlite" else f"{DB_DRIVER}://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
