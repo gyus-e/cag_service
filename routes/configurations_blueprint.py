@@ -28,10 +28,10 @@ def post_configuration():
             system_prompt=system_prompt, 
             model_name=model_name,
             )
-        DB.session.add(configuration)
-        DB.session.commit()
         llm = LLM(configuration.model_name)
         cache_path = initialize_cache(configuration, llm) #TODO: use async message queue
+        DB.session.add(configuration)
+        DB.session.commit()
     except ValueError as e:
         return jsonify(message=str(e)), 400
 
